@@ -1,0 +1,372 @@
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (381.8ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (259.6ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (15.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateAssets (20091218171511)
+  [4;35;1mSQL (37.1ms)[0m   [0mCREATE TABLE `assets` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `data_file_name` varchar(255), `data_content_type` varchar(255), `data_file_size` int(11), `assetable_id` int(11), `assetable_type` varchar(25), `type` varchar(25), `user_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (105.3ms)[0m   [0;1mCREATE INDEX `ndx_type_assetable` ON `assets` (`assetable_id`, `assetable_type`, `type`)[0m
+  [4;35;1mSQL (54.8ms)[0m   [0mCREATE INDEX `fk_assets` ON `assets` (`assetable_id`, `assetable_type`)[0m
+  [4;36;1mSQL (31.3ms)[0m   [0;1mCREATE INDEX `fk_user` ON `assets` (`user_id`)[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091218171511')[0m
+Migrating to CreatePages (20091218172145)
+  [4;36;1mSQL (31.5ms)[0m   [0;1mCREATE TABLE `pages` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `content` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091218172145')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (25.4ms)[0m   [0mSHOW FIELDS FROM `assets`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mdescribe `assets`[0m
+  [4;35;1mSQL (30.1ms)[0m   [0mSHOW KEYS FROM `assets`[0m
+  [4;36;1mSQL (19.4ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mdescribe `pages`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW KEYS FROM `pages`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2009-12-18 19:38:49) [GET]
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` [0m
+Rendering template within layouts/application
+Rendering pages/index
+
+ActionView::TemplateError (undefined method `title' for #<ActionView::Base:0xb6eaed98>) on line #1 of app/views/pages/index.html.erb:
+1: <% title "Pages" %>
+2: 
+3: <table>
+4:   <tr>
+
+    app/views/pages/index.html.erb:1
+
+Rendered rescues/_trace (70.7ms)
+Rendered rescues/_request_and_response (4.8ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (1.4ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2009-12-18 19:39:33) [GET]
+  [4;35;1mPage Load (0.8ms)[0m   [0mSELECT * FROM `pages` [0m
+Rendering template within layouts/application
+Rendering pages/index
+Completed in 74ms (View: 63, DB: 3) | 200 OK [http://localhost/pages]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#new (for 127.0.0.1 at 2009-12-18 19:39:38) [GET]
+  [4;36;1mPage Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+Rendering template within layouts/application
+Rendering pages/new
+Rendered pages/_form (9.7ms)
+Completed in 38ms (View: 27, DB: 1) | 200 OK [http://localhost/pages/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#new (for 127.0.0.1 at 2009-12-18 19:40:17) [GET]
+  [4;35;1mPage Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+Rendering template within layouts/application
+Rendering pages/new
+Rendered pages/_form (6.8ms)
+Completed in 30ms (View: 19, DB: 1) | 200 OK [http://localhost/pages/new]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#new (for 127.0.0.1 at 2009-12-18 19:40:40) [GET]
+  [4;36;1mPage Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+Rendering template within layouts/application
+Rendering pages/new
+Rendered pages/_form (11.6ms)
+Completed in 33ms (View: 22, DB: 1) | 200 OK [http://localhost/pages/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#new (for 127.0.0.1 at 2009-12-18 19:40:49) [GET]
+  [4;35;1mPage Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+Rendering template within layouts/application
+Rendering pages/new
+Rendered pages/_form (8.1ms)
+Completed in 33ms (View: 22, DB: 1) | 200 OK [http://localhost/pages/new]
+  [4;36;1mSQL (10.7ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (20.9ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CkeditorController#images (for 127.0.0.1 at 2009-12-18 19:40:55) [GET]
+  Parameters: {"CKEditorFuncNum"=>"2", "langCode"=>"en", "CKEditor"=>"page_content_editor"}
+  [4;36;1mPicture Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `assets`[0m
+  [4;35;1mPicture Load (0.4ms)[0m   [0mSELECT * FROM `assets` WHERE ( (`assets`.`type` = 'Picture' ) ) ORDER BY id DESC[0m
+Rendering template within layouts/ckeditor
+Rendering ckeditor/images
+Rendered ckeditor/_swfupload (3.5ms)
+Completed in 176ms (View: 90, DB: 33) | 200 OK [http://localhost/ckeditor/images?CKEditor=page_content_editor&CKEditorFuncNum=2&langCode=en]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CkeditorController#create (for 127.0.0.1 at 2009-12-18 19:41:09) [POST]
+  Parameters: {"kind"=>"image", "Filename"=>"004_WallpapersMania_191208_Go2Load.com.jpg", "data"=>#<File:/tmp/RackMultipart20091218-21101-1th1fc9-0>, "amp"=>nil, "authenticity_token"=>"Pdvl4aesUxnodTl+ncCgfsgcMUvGyEib29fkofpJIwc=", "assetable_type"=>"Demo", "Upload"=>"Submit Query", "_rails-ckeditor-demo-app_session"=>"BAh7BzoQX2NzcmZfdG9rZW4iMVBkdmw0YWVzVXhub2RUbCtuY0NnZnNnY01Vdkd5RWliMjlma29mcEpJd2M9Og9zZXNzaW9uX2lkIiU2YTJiMTY2MzI3ODVlNDZiNTAxYmQ3MThkOTczZDhmZA==--5d158d0b7813ef39e8aa2f19dd372d0828282fa4", "assetable_id"=>"0"}
+  [4;36;1mPicture Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `assets`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mPicture Create (0.9ms)[0m   [0;1mINSERT INTO `assets` (`created_at`, `data_content_type`, `updated_at`, `assetable_type`, `data_file_name`, `data_file_size`, `type`, `user_id`, `assetable_id`) VALUES('2009-12-18 17:41:10', 'application/octet-stream', '2009-12-18 17:41:10', 'Demo', '004_WallpapersMania_191208_Go2Load.com.jpg', 113184, 'Picture', NULL, 0)[0m
+[paperclip] Saving attachments.
+[paperclip] saving /var/www/rails-ckeditor-demo-app/public/assets/pictures/1/original_004_WallpapersMania_191208_Go2Load.com.jpg
+[paperclip] saving /var/www/rails-ckeditor-demo-app/public/assets/pictures/1/thumb_004_WallpapersMania_191208_Go2Load.com.jpg
+[paperclip] saving /var/www/rails-ckeditor-demo-app/public/assets/pictures/1/content_004_WallpapersMania_191208_Go2Load.com.jpg
+  [4;35;1mSQL (1.4ms)[0m   [0mCOMMIT[0m
+Completed in 1718ms (View: 3, DB: 4) | 200 OK [http://localhost/ckeditor/create?_rails-ckeditor-demo-app_session=BAh7BzoQX2NzcmZfdG9rZW4iMVBkdmw0YWVzVXhub2RUbCtuY0NnZnNnY01Vdkd5RWliMjlma29mcEpJd2M9Og9zZXNzaW9uX2lkIiU2YTJiMTY2MzI3ODVlNDZiNTAxYmQ3MThkOTczZDhmZA%3D%3D--5d158d0b7813ef39e8aa2f19dd372d0828282fa4&amp;authenticity_token=Pdvl4aesUxnodTl%2BncCgfsgcMUvGyEib29fkofpJIwc%3D&amp;kind=image]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CkeditorController#create (for 127.0.0.1 at 2009-12-18 19:41:12) [POST]
+  Parameters: {"kind"=>"image", "Filename"=>"166_Free_Windows_Xp_Vista_Wallpapers.jpg", "data"=>#<File:/tmp/RackMultipart20091218-21101-pn5vhp-0>, "amp"=>nil, "authenticity_token"=>"Pdvl4aesUxnodTl+ncCgfsgcMUvGyEib29fkofpJIwc=", "assetable_type"=>"Demo", "Upload"=>"Submit Query", "_rails-ckeditor-demo-app_session"=>"BAh7BzoQX2NzcmZfdG9rZW4iMVBkdmw0YWVzVXhub2RUbCtuY0NnZnNnY01Vdkd5RWliMjlma29mcEpJd2M9Og9zZXNzaW9uX2lkIiU2YTJiMTY2MzI3ODVlNDZiNTAxYmQ3MThkOTczZDhmZA==--5d158d0b7813ef39e8aa2f19dd372d0828282fa4", "assetable_id"=>"0"}
+  [4;36;1mPicture Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `assets`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mPicture Create (1.1ms)[0m   [0;1mINSERT INTO `assets` (`created_at`, `data_content_type`, `updated_at`, `assetable_type`, `data_file_name`, `data_file_size`, `type`, `user_id`, `assetable_id`) VALUES('2009-12-18 17:41:12', 'application/octet-stream', '2009-12-18 17:41:12', 'Demo', '166_Free_Windows_Xp_Vista_Wallpapers.jpg', 78618, 'Picture', NULL, 0)[0m
+[paperclip] Saving attachments.
+[paperclip] saving /var/www/rails-ckeditor-demo-app/public/assets/pictures/2/original_166_Free_Windows_Xp_Vista_Wallpapers.jpg
+[paperclip] saving /var/www/rails-ckeditor-demo-app/public/assets/pictures/2/thumb_166_Free_Windows_Xp_Vista_Wallpapers.jpg
+[paperclip] saving /var/www/rails-ckeditor-demo-app/public/assets/pictures/2/content_166_Free_Windows_Xp_Vista_Wallpapers.jpg
+  [4;35;1mSQL (1.3ms)[0m   [0mCOMMIT[0m
+Completed in 517ms (View: 1, DB: 4) | 200 OK [http://localhost/ckeditor/create?_rails-ckeditor-demo-app_session=BAh7BzoQX2NzcmZfdG9rZW4iMVBkdmw0YWVzVXhub2RUbCtuY0NnZnNnY01Vdkd5RWliMjlma29mcEpJd2M9Og9zZXNzaW9uX2lkIiU2YTJiMTY2MzI3ODVlNDZiNTAxYmQ3MThkOTczZDhmZA%3D%3D--5d158d0b7813ef39e8aa2f19dd372d0828282fa4&amp;authenticity_token=Pdvl4aesUxnodTl%2BncCgfsgcMUvGyEib29fkofpJIwc%3D&amp;kind=image]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CkeditorController#create (for 127.0.0.1 at 2009-12-18 19:41:13) [POST]
+  Parameters: {"kind"=>"image", "Filename"=>"1231772730_gun-wallpapers.jpg", "data"=>#<File:/tmp/RackMultipart20091218-21101-1vwlrbv-0>, "amp"=>nil, "authenticity_token"=>"Pdvl4aesUxnodTl+ncCgfsgcMUvGyEib29fkofpJIwc=", "assetable_type"=>"Demo", "Upload"=>"Submit Query", "_rails-ckeditor-demo-app_session"=>"BAh7BzoQX2NzcmZfdG9rZW4iMVBkdmw0YWVzVXhub2RUbCtuY0NnZnNnY01Vdkd5RWliMjlma29mcEpJd2M9Og9zZXNzaW9uX2lkIiU2YTJiMTY2MzI3ODVlNDZiNTAxYmQ3MThkOTczZDhmZA==--5d158d0b7813ef39e8aa2f19dd372d0828282fa4", "assetable_id"=>"0"}
+  [4;36;1mPicture Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `assets`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mPicture Create (2.8ms)[0m   [0;1mINSERT INTO `assets` (`created_at`, `data_content_type`, `updated_at`, `assetable_type`, `data_file_name`, `data_file_size`, `type`, `user_id`, `assetable_id`) VALUES('2009-12-18 17:41:14', 'application/octet-stream', '2009-12-18 17:41:14', 'Demo', '1231772730_gun-wallpapers.jpg', 56575, 'Picture', NULL, 0)[0m
+[paperclip] Saving attachments.
+[paperclip] saving /var/www/rails-ckeditor-demo-app/public/assets/pictures/3/original_1231772730_gun-wallpapers.jpg
+[paperclip] saving /var/www/rails-ckeditor-demo-app/public/assets/pictures/3/thumb_1231772730_gun-wallpapers.jpg
+[paperclip] saving /var/www/rails-ckeditor-demo-app/public/assets/pictures/3/content_1231772730_gun-wallpapers.jpg
+  [4;35;1mSQL (1.9ms)[0m   [0mCOMMIT[0m
+Completed in 389ms (View: 1, DB: 6) | 200 OK [http://localhost/ckeditor/create?_rails-ckeditor-demo-app_session=BAh7BzoQX2NzcmZfdG9rZW4iMVBkdmw0YWVzVXhub2RUbCtuY0NnZnNnY01Vdkd5RWliMjlma29mcEpJd2M9Og9zZXNzaW9uX2lkIiU2YTJiMTY2MzI3ODVlNDZiNTAxYmQ3MThkOTczZDhmZA%3D%3D--5d158d0b7813ef39e8aa2f19dd372d0828282fa4&amp;authenticity_token=Pdvl4aesUxnodTl%2BncCgfsgcMUvGyEib29fkofpJIwc%3D&amp;kind=image]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CkeditorController#create (for 127.0.0.1 at 2009-12-18 19:41:15) [POST]
+  Parameters: {"kind"=>"image", "Filename"=>"2773715076_6dddc5462e_o.jpg", "data"=>#<File:/tmp/RackMultipart20091218-21101-r3douy-0>, "amp"=>nil, "authenticity_token"=>"Pdvl4aesUxnodTl+ncCgfsgcMUvGyEib29fkofpJIwc=", "assetable_type"=>"Demo", "Upload"=>"Submit Query", "_rails-ckeditor-demo-app_session"=>"BAh7BzoQX2NzcmZfdG9rZW4iMVBkdmw0YWVzVXhub2RUbCtuY0NnZnNnY01Vdkd5RWliMjlma29mcEpJd2M9Og9zZXNzaW9uX2lkIiU2YTJiMTY2MzI3ODVlNDZiNTAxYmQ3MThkOTczZDhmZA==--5d158d0b7813ef39e8aa2f19dd372d0828282fa4", "assetable_id"=>"0"}
+  [4;36;1mPicture Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `assets`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mPicture Create (0.4ms)[0m   [0;1mINSERT INTO `assets` (`created_at`, `data_content_type`, `updated_at`, `assetable_type`, `data_file_name`, `data_file_size`, `type`, `user_id`, `assetable_id`) VALUES('2009-12-18 17:41:16', 'application/octet-stream', '2009-12-18 17:41:16', 'Demo', '2773715076_6dddc5462e_o.jpg', 425120, 'Picture', NULL, 0)[0m
+[paperclip] Saving attachments.
+[paperclip] saving /var/www/rails-ckeditor-demo-app/public/assets/pictures/4/original_2773715076_6dddc5462e_o.jpg
+[paperclip] saving /var/www/rails-ckeditor-demo-app/public/assets/pictures/4/thumb_2773715076_6dddc5462e_o.jpg
+[paperclip] saving /var/www/rails-ckeditor-demo-app/public/assets/pictures/4/content_2773715076_6dddc5462e_o.jpg
+  [4;35;1mSQL (5.0ms)[0m   [0mCOMMIT[0m
+Completed in 818ms (View: 1, DB: 8) | 200 OK [http://localhost/ckeditor/create?_rails-ckeditor-demo-app_session=BAh7BzoQX2NzcmZfdG9rZW4iMVBkdmw0YWVzVXhub2RUbCtuY0NnZnNnY01Vdkd5RWliMjlma29mcEpJd2M9Og9zZXNzaW9uX2lkIiU2YTJiMTY2MzI3ODVlNDZiNTAxYmQ3MThkOTczZDhmZA%3D%3D--5d158d0b7813ef39e8aa2f19dd372d0828282fa4&amp;authenticity_token=Pdvl4aesUxnodTl%2BncCgfsgcMUvGyEib29fkofpJIwc%3D&amp;kind=image]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CkeditorController#create (for 127.0.0.1 at 2009-12-18 19:41:17) [POST]
+  Parameters: {"kind"=>"image", "Filename"=>"abstract_0008.jpg", "data"=>#<File:/tmp/RackMultipart20091218-21101-12pho7n-0>, "amp"=>nil, "authenticity_token"=>"Pdvl4aesUxnodTl+ncCgfsgcMUvGyEib29fkofpJIwc=", "assetable_type"=>"Demo", "Upload"=>"Submit Query", "_rails-ckeditor-demo-app_session"=>"BAh7BzoQX2NzcmZfdG9rZW4iMVBkdmw0YWVzVXhub2RUbCtuY0NnZnNnY01Vdkd5RWliMjlma29mcEpJd2M9Og9zZXNzaW9uX2lkIiU2YTJiMTY2MzI3ODVlNDZiNTAxYmQ3MThkOTczZDhmZA==--5d158d0b7813ef39e8aa2f19dd372d0828282fa4", "assetable_id"=>"0"}
+  [4;36;1mPicture Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `assets`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mPicture Create (1.5ms)[0m   [0;1mINSERT INTO `assets` (`created_at`, `data_content_type`, `updated_at`, `assetable_type`, `data_file_name`, `data_file_size`, `type`, `user_id`, `assetable_id`) VALUES('2009-12-18 17:41:18', 'application/octet-stream', '2009-12-18 17:41:18', 'Demo', 'abstract_0008.jpg', 71229, 'Picture', NULL, 0)[0m
+[paperclip] Saving attachments.
+[paperclip] saving /var/www/rails-ckeditor-demo-app/public/assets/pictures/5/original_abstract_0008.jpg
+[paperclip] saving /var/www/rails-ckeditor-demo-app/public/assets/pictures/5/thumb_abstract_0008.jpg
+[paperclip] saving /var/www/rails-ckeditor-demo-app/public/assets/pictures/5/content_abstract_0008.jpg
+  [4;35;1mSQL (4.8ms)[0m   [0mCOMMIT[0m
+Completed in 699ms (View: 1, DB: 8) | 200 OK [http://localhost/ckeditor/create?_rails-ckeditor-demo-app_session=BAh7BzoQX2NzcmZfdG9rZW4iMVBkdmw0YWVzVXhub2RUbCtuY0NnZnNnY01Vdkd5RWliMjlma29mcEpJd2M9Og9zZXNzaW9uX2lkIiU2YTJiMTY2MzI3ODVlNDZiNTAxYmQ3MThkOTczZDhmZA%3D%3D--5d158d0b7813ef39e8aa2f19dd372d0828282fa4&amp;authenticity_token=Pdvl4aesUxnodTl%2BncCgfsgcMUvGyEib29fkofpJIwc%3D&amp;kind=image]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CkeditorController#create (for 127.0.0.1 at 2009-12-18 19:41:19) [POST]
+  Parameters: {"kind"=>"image", "Filename"=>"blue-mozilla-firefox_wallpapers_535_1024x768.jpg", "data"=>#<File:/tmp/RackMultipart20091218-21101-s6d4zw-0>, "amp"=>nil, "authenticity_token"=>"Pdvl4aesUxnodTl+ncCgfsgcMUvGyEib29fkofpJIwc=", "assetable_type"=>"Demo", "Upload"=>"Submit Query", "_rails-ckeditor-demo-app_session"=>"BAh7BzoQX2NzcmZfdG9rZW4iMVBkdmw0YWVzVXhub2RUbCtuY0NnZnNnY01Vdkd5RWliMjlma29mcEpJd2M9Og9zZXNzaW9uX2lkIiU2YTJiMTY2MzI3ODVlNDZiNTAxYmQ3MThkOTczZDhmZA==--5d158d0b7813ef39e8aa2f19dd372d0828282fa4", "assetable_id"=>"0"}
+  [4;36;1mPicture Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `assets`[0m
+  [4;35;1mSQL (7.5ms)[0m   [0mBEGIN[0m
+  [4;36;1mPicture Create (1.2ms)[0m   [0;1mINSERT INTO `assets` (`created_at`, `data_content_type`, `updated_at`, `assetable_type`, `data_file_name`, `data_file_size`, `type`, `user_id`, `assetable_id`) VALUES('2009-12-18 17:41:19', 'application/octet-stream', '2009-12-18 17:41:19', 'Demo', 'blue-mozilla-firefox_wallpapers_535_1024x768.jpg', 124334, 'Picture', NULL, 0)[0m
+[paperclip] Saving attachments.
+[paperclip] saving /var/www/rails-ckeditor-demo-app/public/assets/pictures/6/original_blue-mozilla-firefox_wallpapers_535_1024x768.jpg
+[paperclip] saving /var/www/rails-ckeditor-demo-app/public/assets/pictures/6/thumb_blue-mozilla-firefox_wallpapers_535_1024x768.jpg
+[paperclip] saving /var/www/rails-ckeditor-demo-app/public/assets/pictures/6/content_blue-mozilla-firefox_wallpapers_535_1024x768.jpg
+  [4;35;1mSQL (1.2ms)[0m   [0mCOMMIT[0m
+Completed in 439ms (View: 1, DB: 12) | 200 OK [http://localhost/ckeditor/create?_rails-ckeditor-demo-app_session=BAh7BzoQX2NzcmZfdG9rZW4iMVBkdmw0YWVzVXhub2RUbCtuY0NnZnNnY01Vdkd5RWliMjlma29mcEpJd2M9Og9zZXNzaW9uX2lkIiU2YTJiMTY2MzI3ODVlNDZiNTAxYmQ3MThkOTczZDhmZA%3D%3D--5d158d0b7813ef39e8aa2f19dd372d0828282fa4&amp;authenticity_token=Pdvl4aesUxnodTl%2BncCgfsgcMUvGyEib29fkofpJIwc%3D&amp;kind=image]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CkeditorController#create (for 127.0.0.1 at 2009-12-18 19:41:21) [POST]
+  Parameters: {"kind"=>"image", "Filename"=>"brown-mozilla-firefox_wallpapers_528_1024x768.jpg", "data"=>#<File:/tmp/RackMultipart20091218-21101-1nqt7zo-0>, "amp"=>nil, "authenticity_token"=>"Pdvl4aesUxnodTl+ncCgfsgcMUvGyEib29fkofpJIwc=", "assetable_type"=>"Demo", "Upload"=>"Submit Query", "_rails-ckeditor-demo-app_session"=>"BAh7BzoQX2NzcmZfdG9rZW4iMVBkdmw0YWVzVXhub2RUbCtuY0NnZnNnY01Vdkd5RWliMjlma29mcEpJd2M9Og9zZXNzaW9uX2lkIiU2YTJiMTY2MzI3ODVlNDZiNTAxYmQ3MThkOTczZDhmZA==--5d158d0b7813ef39e8aa2f19dd372d0828282fa4", "assetable_id"=>"0"}
+  [4;36;1mPicture Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `assets`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mPicture Create (1.6ms)[0m   [0;1mINSERT INTO `assets` (`created_at`, `data_content_type`, `updated_at`, `assetable_type`, `data_file_name`, `data_file_size`, `type`, `user_id`, `assetable_id`) VALUES('2009-12-18 17:41:22', 'application/octet-stream', '2009-12-18 17:41:22', 'Demo', 'brown-mozilla-firefox_wallpapers_528_1024x768.jpg', 78109, 'Picture', NULL, 0)[0m
+[paperclip] Saving attachments.
+[paperclip] saving /var/www/rails-ckeditor-demo-app/public/assets/pictures/7/original_brown-mozilla-firefox_wallpapers_528_1024x768.jpg
+[paperclip] saving /var/www/rails-ckeditor-demo-app/public/assets/pictures/7/thumb_brown-mozilla-firefox_wallpapers_528_1024x768.jpg
+[paperclip] saving /var/www/rails-ckeditor-demo-app/public/assets/pictures/7/content_brown-mozilla-firefox_wallpapers_528_1024x768.jpg
+  [4;35;1mSQL (1.3ms)[0m   [0mCOMMIT[0m
+Completed in 612ms (View: 1, DB: 4) | 200 OK [http://localhost/ckeditor/create?_rails-ckeditor-demo-app_session=BAh7BzoQX2NzcmZfdG9rZW4iMVBkdmw0YWVzVXhub2RUbCtuY0NnZnNnY01Vdkd5RWliMjlma29mcEpJd2M9Og9zZXNzaW9uX2lkIiU2YTJiMTY2MzI3ODVlNDZiNTAxYmQ3MThkOTczZDhmZA%3D%3D--5d158d0b7813ef39e8aa2f19dd372d0828282fa4&amp;authenticity_token=Pdvl4aesUxnodTl%2BncCgfsgcMUvGyEib29fkofpJIwc%3D&amp;kind=image]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CkeditorController#create (for 127.0.0.1 at 2009-12-18 19:41:24) [POST]
+  Parameters: {"kind"=>"image", "Filename"=>"Children-honey-Wallpapers-731.jpg", "data"=>#<File:/tmp/RackMultipart20091218-21101-16bh52d-0>, "amp"=>nil, "authenticity_token"=>"Pdvl4aesUxnodTl+ncCgfsgcMUvGyEib29fkofpJIwc=", "assetable_type"=>"Demo", "Upload"=>"Submit Query", "_rails-ckeditor-demo-app_session"=>"BAh7BzoQX2NzcmZfdG9rZW4iMVBkdmw0YWVzVXhub2RUbCtuY0NnZnNnY01Vdkd5RWliMjlma29mcEpJd2M9Og9zZXNzaW9uX2lkIiU2YTJiMTY2MzI3ODVlNDZiNTAxYmQ3MThkOTczZDhmZA==--5d158d0b7813ef39e8aa2f19dd372d0828282fa4", "assetable_id"=>"0"}
+  [4;36;1mPicture Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `assets`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mPicture Create (0.4ms)[0m   [0;1mINSERT INTO `assets` (`created_at`, `data_content_type`, `updated_at`, `assetable_type`, `data_file_name`, `data_file_size`, `type`, `user_id`, `assetable_id`) VALUES('2009-12-18 17:41:25', 'application/octet-stream', '2009-12-18 17:41:25', 'Demo', 'Children-honey-Wallpapers-731.jpg', 152656, 'Picture', NULL, 0)[0m
+[paperclip] Saving attachments.
+[paperclip] saving /var/www/rails-ckeditor-demo-app/public/assets/pictures/8/original_Children-honey-Wallpapers-731.jpg
+[paperclip] saving /var/www/rails-ckeditor-demo-app/public/assets/pictures/8/thumb_Children-honey-Wallpapers-731.jpg
+[paperclip] saving /var/www/rails-ckeditor-demo-app/public/assets/pictures/8/content_Children-honey-Wallpapers-731.jpg
+  [4;35;1mSQL (1.2ms)[0m   [0mCOMMIT[0m
+Completed in 544ms (View: 1, DB: 3) | 200 OK [http://localhost/ckeditor/create?_rails-ckeditor-demo-app_session=BAh7BzoQX2NzcmZfdG9rZW4iMVBkdmw0YWVzVXhub2RUbCtuY0NnZnNnY01Vdkd5RWliMjlma29mcEpJd2M9Og9zZXNzaW9uX2lkIiU2YTJiMTY2MzI3ODVlNDZiNTAxYmQ3MThkOTczZDhmZA%3D%3D--5d158d0b7813ef39e8aa2f19dd372d0828282fa4&amp;authenticity_token=Pdvl4aesUxnodTl%2BncCgfsgcMUvGyEib29fkofpJIwc%3D&amp;kind=image]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#create (for 127.0.0.1 at 2009-12-18 19:41:40) [POST]
+  Parameters: {"commit"=>"Submit", "authenticity_token"=>"Pdvl4aesUxnodTl+ncCgfsgcMUvGyEib29fkofpJIwc=", "page"=>{"title"=>"First Page", "content"=>"<p>\r\n\t<img alt=\"\" src=\"/assets/pictures/8/content_Children-honey-Wallpapers-731.jpg?1261158084\" style=\"width: 575px; height: 431px;\" /></p>\r\n"}}
+  [4;36;1mPage Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mPage Create (0.3ms)[0m   [0;1mINSERT INTO `pages` (`created_at`, `title`, `updated_at`, `content`) VALUES('2009-12-18 17:41:40', 'First Page', '2009-12-18 17:41:40', '<p>\r\n	<img alt=\"\" src=\"/assets/pictures/8/content_Children-honey-Wallpapers-731.jpg?1261158084\" style=\"width: 575px; height: 431px;\" /></p>\r\n')[0m
+  [4;35;1mSQL (47.8ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3005/pages/1
+Completed in 65ms (DB: 49) | 302 Found [http://localhost/pages]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#show (for 127.0.0.1 at 2009-12-18 19:41:40) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPage Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+  [4;35;1mPage Load (0.4ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering pages/show
+Completed in 31ms (View: 19, DB: 2) | 200 OK [http://localhost/pages/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2009-12-18 19:41:46) [GET]
+  [4;36;1mPage Load (1.4ms)[0m   [0;1mSELECT * FROM `pages` [0m
+Rendering template within layouts/application
+Rendering pages/index
+  [4;35;1mPage Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+Completed in 24ms (View: 13, DB: 3) | 200 OK [http://localhost/pages]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#show (for 127.0.0.1 at 2009-12-18 19:41:58) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPage Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+  [4;35;1mPage Load (0.4ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering pages/show
+Completed in 22ms (View: 11, DB: 2) | 200 OK [http://localhost/pages/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#edit (for 127.0.0.1 at 2009-12-18 19:42:01) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPage Columns (3.5ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+  [4;35;1mPage Load (0.4ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering pages/edit
+Rendered pages/_form (96.0ms)
+Completed in 122ms (View: 108, DB: 4) | 200 OK [http://localhost/pages/1/edit]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#update (for 127.0.0.1 at 2009-12-18 19:42:33) [PUT]
+  Parameters: {"commit"=>"Submit", "authenticity_token"=>"Pdvl4aesUxnodTl+ncCgfsgcMUvGyEib29fkofpJIwc=", "id"=>"1", "page"=>{"title"=>"First Page", "content"=>"<p>\r\n\t<strong>123</strong></p>\r\n<p>\r\n\t&nbsp;</p>\r\n<p>\r\n\t&nbsp;</p>\r\n<p>\r\n\t<img alt=\"\" src=\"/assets/pictures/8/content_Children-honey-Wallpapers-731.jpg?1261158084\" style=\"width: 575px; height: 431px;\" /></p>\r\n"}}
+  [4;36;1mPage Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+  [4;35;1mPage Load (0.5ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 1) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPage Update (1.7ms)[0m   [0mUPDATE `pages` SET `content` = '<p>\r\n	<strong>123</strong></p>\r\n<p>\r\n	&nbsp;</p>\r\n<p>\r\n	&nbsp;</p>\r\n<p>\r\n	<img alt=\"\" src=\"/assets/pictures/8/content_Children-honey-Wallpapers-731.jpg?1261158084\" style=\"width: 575px; height: 431px;\" /></p>\r\n', `updated_at` = '2009-12-18 17:42:33' WHERE `id` = 1[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3005/pages/1
+Completed in 24ms (DB: 6) | 302 Found [http://localhost/pages/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#show (for 127.0.0.1 at 2009-12-18 19:42:33) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPage Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering pages/show
+Completed in 22ms (View: 11, DB: 1) | 200 OK [http://localhost/pages/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#edit (for 127.0.0.1 at 2009-12-18 19:42:37) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPage Columns (7.3ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+  [4;36;1mPage Load (0.4ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering pages/edit
+Rendered pages/_form (8.0ms)
+Completed in 32ms (View: 14, DB: 8) | 200 OK [http://localhost/pages/1/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CkeditorController#images (for 127.0.0.1 at 2009-12-18 19:42:42) [GET]
+  Parameters: {"CKEditorFuncNum"=>"2", "langCode"=>"en", "CKEditor"=>"page_content_editor"}
+  [4;35;1mPicture Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `assets`[0m
+  [4;36;1mPicture Load (0.4ms)[0m   [0;1mSELECT * FROM `assets` WHERE ( (`assets`.`type` = 'Picture' ) ) ORDER BY id DESC[0m
+Rendering template within layouts/ckeditor
+Rendering ckeditor/images
+Rendered ckeditor/_swfupload (0.2ms)
+Rendered ckeditor/_image (52.0ms)
+Rendered ckeditor/_image (4.5ms)
+Rendered ckeditor/_image (4.4ms)
+Rendered ckeditor/_image (3.7ms)
+Rendered ckeditor/_image (4.9ms)
+Rendered ckeditor/_image (4.5ms)
+Rendered ckeditor/_image (4.9ms)
+Rendered ckeditor/_image (4.7ms)
+Completed in 131ms (View: 114, DB: 2) | 200 OK [http://localhost/ckeditor/images?CKEditor=page_content_editor&CKEditorFuncNum=2&langCode=en]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#update (for 127.0.0.1 at 2009-12-18 19:43:19) [PUT]
+  Parameters: {"commit"=>"Submit", "authenticity_token"=>"Pdvl4aesUxnodTl+ncCgfsgcMUvGyEib29fkofpJIwc=", "id"=>"1", "page"=>{"title"=>"First Page", "content"=>"<p>\r\n\t<strong>123</strong></p>\r\n<p>\r\n\t<img alt=\"\" src=\"/assets/pictures/1/content_004_WallpapersMania_191208_Go2Load.com.jpg\" style=\"width: 575px; height: 460px;\" /></p>\r\n<p>\r\n\t&nbsp;</p>\r\n<p>\r\n\t<img alt=\"\" src=\"/assets/pictures/8/content_Children-honey-Wallpapers-731.jpg?1261158084\" style=\"width: 575px; height: 431px;\" /></p>\r\n"}}
+  [4;35;1mPage Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mPage Update (0.5ms)[0m   [0;1mUPDATE `pages` SET `content` = '<p>\r\n	<strong>123</strong></p>\r\n<p>\r\n	<img alt=\"\" src=\"/assets/pictures/1/content_004_WallpapersMania_191208_Go2Load.com.jpg\" style=\"width: 575px; height: 460px;\" /></p>\r\n<p>\r\n	&nbsp;</p>\r\n<p>\r\n	<img alt=\"\" src=\"/assets/pictures/8/content_Children-honey-Wallpapers-731.jpg?1261158084\" style=\"width: 575px; height: 431px;\" /></p>\r\n', `updated_at` = '2009-12-18 17:43:19' WHERE `id` = 1[0m
+  [4;35;1mSQL (17.5ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3005/pages/1
+Completed in 51ms (DB: 20) | 302 Found [http://localhost/pages/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#show (for 127.0.0.1 at 2009-12-18 19:43:19) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPage Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering pages/show
+Completed in 31ms (View: 12, DB: 1) | 200 OK [http://localhost/pages/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2009-12-18 19:43:31) [GET]
+  [4;36;1mPage Load (1.8ms)[0m   [0;1mSELECT * FROM `pages` [0m
+Rendering template within layouts/application
+Rendering pages/index
+  [4;35;1mPage Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+Completed in 109ms (View: 15, DB: 3) | 200 OK [http://localhost/pages]

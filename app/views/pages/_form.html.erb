@@ -1,0 +1,20 @@
+<% form_for @page do |f| %>
+  <%= f.error_messages %>
+  
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  
+  <p>
+    <%= f.label :content %><br />
+    <%= f.cktext_area :content, :swf_params=>{:assetable_type=>'Demo', :assetable_id=>0}, :width => 700 %>
+    
+    <% 
+      # if you want to save different image for each user
+      # form.cktext_area :content, :swf_params=>{:assetable_type=>'User', :assetable_id=>current_user.id}
+     %>
+  </p>
+  
+  <p><%= f.submit "Submit" %></p>
+<% end %>

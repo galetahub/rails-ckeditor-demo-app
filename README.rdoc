@@ -1,0 +1,11 @@
+= Rails CKEditor demo application
+
+This master branch is a simple solution for the usage "rails-ckeditor" plugin in Rails 2.3.
+  
+Once you clone this repository, just run the migrations and start up the server to try it out.
+  
+  rake db:create
+  rake db:migrate
+  script/server
+  
+And type in your browser http://localhost:3000/pages.
