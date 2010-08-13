@@ -215,13 +215,13 @@ FileProgress.prototype.toggleCancel = function (show, swfuploadInstance) {
 FileProgress.prototype.createThumbnail = function(serverData) {
   var object = JSON.decode(serverData);
   var container = $('container');
+  var asset = (typeof(object.asset) == 'undefined') ? object : object.asset;
   
   var image_src = null;
   var image_alt = null;
   var file_size = null;
   var file_name = null;
   var file_date = null;
-  var asset = (typeof object.picture != 'undefined') ? object.picture : object.attachment_file;
   
   if (typeof asset == 'undefined')
     return;
@@ -231,27 +231,8 @@ FileProgress.prototype.createThumbnail = function(serverData) {
   file_name = asset.filename;
   file_date = asset.format_created_at;
   
-  switch(asset.type.toLowerCase())
-  {
-    case "picture":
-      image_src = object.picture.url_thumb;
-      image_alt = object.picture.url_content;
-      
-      break;
-    case "attachment_file" :
-      image_src = '/javascripts/ckeditor/images/ckfnothumb.gif';
-    
-      if (file_name.indexOf('.swf') != -1)
-      {
-        image_src = '/javascripts/ckeditor/images/swf.gif';
-      }
-      else if (file_name.indexOf('.pdf') != -1)
-      {
-        image_src = '/javascripts/ckeditor/images/pdf.gif';
-      }
-      
-      break;
-  }
+  image_src = asset.url_thumb;
+  image_alt = asset.url_content;
   
   var div = new Element('div');
   div.className = 'FCKThumb';
@@ -261,11 +242,13 @@ FileProgress.prototype.createThumbnail = function(serverData) {
   table.border = 0;
   table.setAttribute('cellspacing', 0);
   table.setAttribute('cellpadding', 0);
-  table.width = 100;
-  table.height = 100;
+  table.setAttribute('width', 100);
+  table.setAttribute('height', 100);
   
   var row = table.tBodies[0].insertRow(0);
   var cell = row.insertCell(row.cells.length);
+  cell.setAttribute('align', 'center');
+  cell.setAttribute('valign', 'middle');
   
   cell.innerHTML = "<img src='" + image_src + "' alt='" + image_alt + "' title='" + file_name + "' class='image' onerror=\"this.src='/javascripts/ckeditor/images/ckfnothumb.gif'\" />"
   
