@@ -8,7 +8,7 @@
   
   <p>
     <%= f.label :content %><br />
-    <%= f.cktext_area :content, :height => 400 %>
+    <%= f.cktext_area :content, :height => 400, :swf_params => { :assetable_type => 'Test', :assetable_id => 1 } %>
     
     <% 
       # if you want to save different image for each user
